@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "CommonJS",
+        "strict": true,
+        "strictPropertyInitialization": false,
+        "outDir": "./build",
+        "esModuleInterop": true,
+        "baseUrl": "./",
+        "paths": {
+            "$*": ["src/*"]
+        },
+        "resolveJsonModule": true
+    },
+    "include": ["./src/**/*", ".eslintrc.js", "request.js"],
+    "exclude": ["node_modules"],
+    "resolve": {
+        "extensions": [".ts", ".js"]
+    }
+}
