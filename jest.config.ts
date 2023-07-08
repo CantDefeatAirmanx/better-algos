@@ -1,4 +1,6 @@
-export default {
+import type { Config } from 'jest';
+
+const config: Config = {
     globals: {
         'ts-jest': {
             isolatedModules: true,
@@ -22,3 +24,5 @@ export default {
     transformIgnorePatterns: ['/node_modules\\/(?!@ls)/'],
     verbose: true,
 };
+
+export default config;
