@@ -41,3 +41,5 @@ export const getGcdStack = (first: number, second: number) => {
 
     return lesser;
 };
+
+export {};

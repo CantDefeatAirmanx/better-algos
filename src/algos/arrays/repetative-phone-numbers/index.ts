@@ -25,3 +25,5 @@ export const findRepetativePhones = (notebook: Notebook) => {
         .map(([phone, names]) => `${names.join(', ')}: ${phone}`)
         .join('\n');
 };
+
+export {};

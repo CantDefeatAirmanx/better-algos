@@ -15,3 +15,5 @@ const canFormPalindrome = (string: string) => {
 
     return oddCharsCount === 0 || oddCharsCount === 1;
 };
+
+export {};

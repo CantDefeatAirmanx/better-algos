@@ -25,3 +25,5 @@ const calculateFactorial = (n: number) => {
 
     return result;
 };
+
+export {};
