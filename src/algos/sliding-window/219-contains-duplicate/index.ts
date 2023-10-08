@@ -22,13 +22,11 @@ const containsNearbyDuplicate = (nums: number[], k: number) => {
         const num = nums[right];
         if (dict.has(num)) {
             const savedIndex = dict.get(num)!;
-            dict.set(num, right);
             if (Math.abs(right - savedIndex) <= k) {
                 return true;
             }
-        } else {
-            dict.set(num, right);
         }
+        dict.set(num, right);
     }
 
     return result;
