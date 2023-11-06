@@ -54,3 +54,23 @@ export const findMinimaNonConstructibleChange = (coins: number[]) => {
 
     return maxSum + 1;
 };
+
+export const findMinimaNonConstructibleChangeMath = (coins: number[]) => {
+    if (coins.length === 0) {
+        return 0;
+    }
+
+    const sorted = [...coins].sort((f, s) => f - s);
+
+    let change = 0;
+    for (const coin of sorted) {
+        const newChange = change + coin;
+
+        if (coin > change + 1) {
+            return change + 1;
+        }
+        change = newChange;
+    }
+
+    return change + 1;
+};
