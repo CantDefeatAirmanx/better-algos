@@ -11,7 +11,7 @@
  *       Output: [0]
  */
 
-const moveZerosToEndBuiltInSorting = (nums: number[]) => {
+export const moveZerosToEndBuiltInSorting = (nums: number[]) => {
     nums.sort((_, second) => {
         if (second === 0) {
             return -1;
@@ -21,7 +21,7 @@ const moveZerosToEndBuiltInSorting = (nums: number[]) => {
     return nums;
 };
 
-const moveZerosLinearComplexity = (nums: number[]) => {
+export const moveZerosLinearComplexity = (nums: number[]) => {
     let replaceIndex = 0;
     for (const num of nums) {
         if (num !== 0) {
@@ -36,5 +36,3 @@ const moveZerosLinearComplexity = (nums: number[]) => {
 
     return nums;
 };
-
-export {};
