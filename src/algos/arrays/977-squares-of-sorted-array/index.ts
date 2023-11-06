@@ -15,7 +15,7 @@
  *   Output: [4,9,9,49,121]
  */
 
-const squaresOfSortedArray = (nums: number[]) => {
+export const squaresOfSortedArray = (nums: number[]) => {
     const result: (number[] | undefined)[] = [];
 
     for (let i = 0; i < nums.length; i++) {
@@ -40,4 +40,46 @@ const squaresOfSortedArray = (nums: number[]) => {
 
         return acc;
     }, []);
+};
+
+export const squaresOfSortedArray2 = (nums: number[]) => {
+    const dict: Record<number, number[]> = {};
+
+    for (let ind = 0; ind < nums.length; ind++) {
+        const num = nums[ind];
+        const key = Math.abs(num);
+        const squared = num ** 2;
+
+        if (dict[key] === undefined) {
+            dict[key] = [squared];
+
+            continue;
+        }
+
+        dict[key].push(squared);
+    }
+
+    return Object.values(dict).flat();
+};
+
+export const squaresOfSortedArrayTwoPointers = (nums: number[]) => {
+    const result: number[] = new Array(nums.length);
+
+    let left = 0;
+    let right = nums.length - 1;
+
+    for (let index = result.length - 1; index >= 0; index--) {
+        const leftSquare = nums[left] ** 2;
+        const rightSquare = nums[right] ** 2;
+
+        if (leftSquare > rightSquare) {
+            result[index] = leftSquare;
+            left++;
+        } else {
+            result[index] = rightSquare;
+            right--;
+        }
+    }
+
+    return result;
 };
