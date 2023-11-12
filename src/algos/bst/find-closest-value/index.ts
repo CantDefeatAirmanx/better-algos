@@ -48,8 +48,8 @@ export const findClosestValueInBSTRecursion = (node: BSTNode, value: number): nu
     const isHigher = diff > 0;
 
     const recResult = isHigher
-        ? node.left !== null && findClosestValueInBST(node.left, value)
-        : node.right !== null && findClosestValueInBST(node.right, value);
+        ? node.left !== null && findClosestValueInBSTRecursion(node.left, value)
+        : node.right !== null && findClosestValueInBSTRecursion(node.right, value);
 
     if (typeof recResult === 'boolean') {
         return nodeValue;
