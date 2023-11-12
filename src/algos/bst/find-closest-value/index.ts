@@ -1,5 +1,11 @@
 import { BSTNode } from '$algos/data-structures/BST-node';
 
+/**
+ *  Task: find node value in BST which is the closes to the target value
+ *  If there are multiple values with same distance to target value, return
+ *  first with left-to-right traversal of BST
+ */
+
 export const findClosestValueInBST = (node: BSTNode, value: number): number => {
     let result: number = node.val;
     let diff = result - value;
