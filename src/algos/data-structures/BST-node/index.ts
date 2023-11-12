@@ -7,7 +7,7 @@ export class BSTNode {
         this.val = val;
         this.left = left !== undefined ? left : null;
         this.right = right !== undefined ? right : null;
-        const isValid = this.performSelfValidate();
+        const isValid = BSTNode.performSelfValidate(this);
 
         if (!isValid) {
             throw new Error(
@@ -16,8 +16,8 @@ export class BSTNode {
         }
     }
 
-    public performSelfValidate(): boolean {
-        const root = this;
+    public static performSelfValidate(node: BSTNode): boolean {
+        const root = node;
 
         if (root === null) {
             return true;
