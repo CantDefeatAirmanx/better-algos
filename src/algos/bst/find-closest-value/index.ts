@@ -2,7 +2,7 @@ import { BSTNode } from '$algos/data-structures/BST-node';
 
 export const findClosestValueInBST = (root: BSTNode, value: number): number => {
     let result: number = root.val;
-    let diff = Math.abs(result - value);
+    let diff = result - value;
 
     if (diff === 0) {
         return result;
@@ -21,12 +21,18 @@ export const findClosestValueInBST = (root: BSTNode, value: number): number => {
             return node.val;
         }
 
-        const currentDiff = Math.abs(node.val - value);
-        if (currentDiff < diff) {
+        const currentDiff = node.val - value;
+        const isHigher = currentDiff > 0;
+        if (Math.abs(currentDiff) < Math.abs(diff)) {
             result = node.val;
             diff = currentDiff;
         }
-        stack.push(node.left, node.right);
+
+        if (isHigher) {
+            stack.push(node.left);
+        } else {
+            stack.push(node.right);
+        }
     }
 
     return result;
