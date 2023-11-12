@@ -1,5 +1,5 @@
 import { BSTNode } from '$algos/data-structures/BST-node';
-import { findClosestValueInBST } from '.';
+import { findClosestValueInBST, findClosestValueInBSTRecursion } from '.';
 
 describe('findClosestValueInBST test', () => {
     const tree: BSTNode = {
@@ -50,19 +50,39 @@ describe('findClosestValueInBST test', () => {
      *    1         14
      */
 
-    test('should work with existing value in tree', () => {
-        expect(findClosestValueInBST(tree, 5)).toBe(5);
-        expect(findClosestValueInBST(tree, 13)).toBe(13);
-        expect(findClosestValueInBST(tree, 22)).toBe(22);
+    describe('stack solution', () => {
+        test('should work with existing value in tree', () => {
+            expect(findClosestValueInBST(tree, 5)).toBe(5);
+            expect(findClosestValueInBST(tree, 13)).toBe(13);
+            expect(findClosestValueInBST(tree, 22)).toBe(22);
+        });
+
+        test('should find closest value in tree', () => {
+            expect(findClosestValueInBST(tree, 3)).toBe(2);
+            expect(findClosestValueInBST(tree, 23)).toBe(22);
+            expect(findClosestValueInBST(tree, 0)).toBe(1);
+        });
+
+        test('should return first closest if there are multiple in tree', () => {
+            expect(findClosestValueInBST(tree, 12)).toBe(13);
+        });
     });
 
-    test('should find closest value in tree', () => {
-        expect(findClosestValueInBST(tree, 3)).toBe(2);
-        expect(findClosestValueInBST(tree, 23)).toBe(22);
-        expect(findClosestValueInBST(tree, 0)).toBe(1);
-    });
+    describe('recursion solution', () => {
+        test('should work with existing value in tree', () => {
+            expect(findClosestValueInBSTRecursion(tree, 5)).toBe(5);
+            expect(findClosestValueInBSTRecursion(tree, 13)).toBe(13);
+            expect(findClosestValueInBSTRecursion(tree, 22)).toBe(22);
+        });
 
-    test('should return first closest if there are multiple in tree', () => {
-        expect(findClosestValueInBST(tree, 12)).toBe(13);
+        test('should find closest value in tree', () => {
+            expect(findClosestValueInBSTRecursion(tree, 3)).toBe(2);
+            expect(findClosestValueInBSTRecursion(tree, 23)).toBe(22);
+            expect(findClosestValueInBSTRecursion(tree, 0)).toBe(1);
+        });
+
+        test('should return first closest if there are multiple in tree', () => {
+            expect(findClosestValueInBSTRecursion(tree, 12)).toBe(13);
+        });
     });
 });
