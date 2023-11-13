@@ -4,7 +4,39 @@
 
 import { BSTNode } from '$algos/data-structures/BST-node';
 
-export const calculateNodeDepthsInitial = (root: BSTNode) => {};
+export const calculateNodeDepthsInitial = (root: BSTNode) => {
+    let result = 0;
+
+    const stack = [[root]];
+    let currentDepth = 1;
+
+    while (currentDepth === stack.length) {
+        const currentDepthIndex = currentDepth - 1;
+        const nodesOnDepth = stack[currentDepthIndex];
+
+        const nextDepthIndex = currentDepthIndex + 1;
+        nodesOnDepth.forEach((node) => {
+            result += currentDepth;
+            if (node.left !== null) {
+                if (stack[nextDepthIndex] === undefined) {
+                    stack[nextDepthIndex] = [];
+                }
+                stack[nextDepthIndex].push(node.left);
+            }
+
+            if (node.right !== null) {
+                if (stack[nextDepthIndex] === undefined) {
+                    stack[nextDepthIndex] = [];
+                }
+                stack[nextDepthIndex].push(node.right);
+            }
+        });
+
+        currentDepth++;
+    }
+
+    return result;
+};
 
 export const calculateNodeDepthsRecursion = (root: BSTNode) => {
     let result = 0;
