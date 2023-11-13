@@ -1,6 +1,6 @@
 /**
  * Write function that returns array of sums node values of BST branches.
- * Order of branches sums does not matter but be better if it has left-to-right structure.
+ * Result should be in left-to-right branch order.
  */
 
 import { BSTNode } from '$algos/data-structures/BST-node';
@@ -66,15 +66,17 @@ export const calculateBranchSumsRecursion = (node: BSTNode) => {
             return;
         }
 
-        if (node.right !== null) {
-            recursiveWalk(node.right, currentSum + node.val);
-        }
-
         if (node.left !== null) {
             recursiveWalk(node.left, currentSum + node.val);
         }
+
+        if (node.right !== null) {
+            recursiveWalk(node.right, currentSum + node.val);
+        }
     };
     recursiveWalk(node, 0);
+
+    console.log(result);
 
     return result;
 };

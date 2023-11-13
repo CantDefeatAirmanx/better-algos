@@ -53,13 +53,13 @@ describe('calculateBranchSums test', () => {
 
     describe('stack', () => {
         test('should calculate branch sums', () => {
-            expect(sortAsc(calculateBranchSumsInitial(tree))).toEqual(sortAsc([18, 19, 52, 47]));
+            expect(calculateBranchSumsInitial(tree)).toEqual([18, 19, 52, 47]);
         });
     });
 
     describe('recursion', () => {
         test('should calculate branch sums', () => {
-            expect(sortAsc(calculateBranchSumsRecursion(tree))).toEqual(sortAsc([18, 19, 52, 47]));
+            expect(calculateBranchSumsRecursion(tree)).toEqual([18, 19, 52, 47]);
         });
     });
 });
