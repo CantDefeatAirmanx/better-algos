@@ -1,5 +1,5 @@
 import { BSTNode } from '$algos/data-structures/BST-node';
-import { calculateNodeDepthsInitial, calculateNodeDepthsRecursion } from '.';
+import { calculateNodeDepthsEnhanced, calculateNodeDepthsInitial, calculateNodeDepthsRecursion } from '.';
 
 describe('findClosestValueInBST test', () => {
     const tree: BSTNode = {
@@ -53,6 +53,12 @@ describe('findClosestValueInBST test', () => {
     describe('stack solution', () => {
         test('should calculate nodes depths', () => {
             expect(calculateNodeDepthsInitial(tree)).toBe(16);
+        });
+    });
+
+    describe('enhanced solution', () => {
+        test('should calculate nodes depths', () => {
+            expect(calculateNodeDepthsEnhanced(tree)).toBe(16);
         });
     });
 

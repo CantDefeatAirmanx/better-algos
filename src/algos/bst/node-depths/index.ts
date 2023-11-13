@@ -5,6 +5,7 @@
 
 import { BSTNode } from '$algos/data-structures/BST-node';
 
+// space O(d) time O(n)
 export const calculateNodeDepthsInitial = (root: BSTNode) => {
     let result = 0;
 
@@ -38,6 +39,28 @@ export const calculateNodeDepthsInitial = (root: BSTNode) => {
     return result;
 };
 
+// space O(d) time O(n)
+export const calculateNodeDepthsEnhanced = (root: BSTNode) => {
+    let result = 0;
+    const stack = [{ node: root, depth: 0 }];
+
+    while (stack.length > 0) {
+        const obj = stack.pop()!;
+        result += obj.depth;
+
+        if (obj.node.left !== null) {
+            stack.push({ node: obj.node.left, depth: obj.depth + 1 });
+        }
+
+        if (obj.node.right !== null) {
+            stack.push({ node: obj.node.right, depth: obj.depth + 1 });
+        }
+    }
+
+    return result;
+};
+
+// space O(d) time O(n)
 export const calculateNodeDepthsRecursion = (root: BSTNode) => {
     let result = 0;
 
