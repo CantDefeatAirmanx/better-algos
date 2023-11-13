@@ -49,15 +49,17 @@ describe('calculateBranchSums test', () => {
          */
     };
 
+    const sortAsc = (nums: number[]) => nums.sort((f, s) => f - s);
+
     describe('stack', () => {
         test('should calculate branch sums', () => {
-            expect(calculateBranchSumsInitial(tree)).toEqual([18, 19, 52, 47]);
+            expect(sortAsc(calculateBranchSumsInitial(tree))).toEqual(sortAsc([18, 19, 52, 47]));
         });
     });
 
     describe('recursion', () => {
-        // test('should calculate branch sums', () => {
-        //     expect(calculateBranchSumsRecursion(tree)).toEqual([18, 19, 52, 47]);
-        // });
+        test('should calculate branch sums', () => {
+            expect(sortAsc(calculateBranchSumsRecursion(tree))).toEqual(sortAsc([18, 19, 52, 47]));
+        });
     });
 });
