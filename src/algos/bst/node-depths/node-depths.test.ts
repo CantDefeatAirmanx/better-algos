@@ -52,13 +52,13 @@ describe('findClosestValueInBST test', () => {
 
     describe('stack solution', () => {
         test('should calculate nodes depths', () => {
-            // expect(calculateNodeDepthsInitial(tree)).toBe(25);
+            expect(calculateNodeDepthsInitial(tree)).toBe(16);
         });
     });
 
     describe('recursion solution', () => {
         test('should calculate nodes depths', () => {
-            expect(calculateNodeDepthsRecursion(tree)).toBe(25);
+            expect(calculateNodeDepthsRecursion(tree)).toBe(16);
         });
     });
 });

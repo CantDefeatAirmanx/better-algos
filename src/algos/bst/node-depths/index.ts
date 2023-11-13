@@ -1,5 +1,6 @@
 /**
- * Task: calculate node depths of BST (root has depth = 1, root.left has depth 2, etc.)
+ * Task: calculate node depths of BST (root has depth = 0, root.left has depth 1, etc.)
+ * Node Depth is a distance from root to its level.
  */
 
 import { BSTNode } from '$algos/data-structures/BST-node';
@@ -8,31 +9,30 @@ export const calculateNodeDepthsInitial = (root: BSTNode) => {
     let result = 0;
 
     const stack = [[root]];
-    let currentDepth = 1;
+    let currentDepth = 0;
 
-    while (currentDepth === stack.length) {
-        const currentDepthIndex = currentDepth - 1;
-        const nodesOnDepth = stack[currentDepthIndex];
+    while (currentDepth === stack.length - 1) {
+        const nodesOnDepth = stack[currentDepth];
 
-        const nextDepthIndex = currentDepthIndex + 1;
+        const nextDepth = currentDepth + 1;
         nodesOnDepth.forEach((node) => {
             result += currentDepth;
             if (node.left !== null) {
-                if (stack[nextDepthIndex] === undefined) {
-                    stack[nextDepthIndex] = [];
+                if (stack[nextDepth] === undefined) {
+                    stack[nextDepth] = [];
                 }
-                stack[nextDepthIndex].push(node.left);
+                stack[nextDepth].push(node.left);
             }
 
             if (node.right !== null) {
-                if (stack[nextDepthIndex] === undefined) {
-                    stack[nextDepthIndex] = [];
+                if (stack[nextDepth] === undefined) {
+                    stack[nextDepth] = [];
                 }
-                stack[nextDepthIndex].push(node.right);
+                stack[nextDepth].push(node.right);
             }
         });
 
-        currentDepth++;
+        currentDepth = nextDepth;
     }
 
     return result;
@@ -52,7 +52,7 @@ export const calculateNodeDepthsRecursion = (root: BSTNode) => {
             walkNodes(node.right, depth + 1);
         }
     };
-    walkNodes(root, 1);
+    walkNodes(root, 0);
 
     return result;
 };
