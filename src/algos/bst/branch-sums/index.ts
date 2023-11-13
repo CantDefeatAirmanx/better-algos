@@ -76,7 +76,5 @@ export const calculateBranchSumsRecursion = (node: BSTNode) => {
     };
     recursiveWalk(node, 0);
 
-    console.log(result);
-
     return result;
 };
