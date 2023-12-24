@@ -1,6 +1,6 @@
 /**
  * Task: calculate node depths of BST (root has depth = 0, root.left has depth 1, etc.)
- * Node Depth is a distance from root to its level.
+ * Node Depth is a distance from root to its level. Need to sum up all node depths.
  */
 
 import { BSTNode } from '$algos/data-structures/BST-node';
