@@ -1,5 +1,5 @@
 import { BSTNode } from '$algos/data-structures/BST-node';
-import { calculateBranchSumsInitial, calculateBranchSumsRecursion } from '.';
+import { calculateBranchSumsStack, calculateBranchSumsRecursion } from '.';
 
 describe('calculateBranchSums test', () => {
     const tree: BSTNode = {
@@ -53,7 +53,7 @@ describe('calculateBranchSums test', () => {
 
     describe('stack', () => {
         test('should calculate branch sums', () => {
-            expect(calculateBranchSumsInitial(tree)).toEqual([18, 19, 52, 47]);
+            expect(calculateBranchSumsStack(tree)).toEqual([18, 19, 52, 47]);
         });
     });
 

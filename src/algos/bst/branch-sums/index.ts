@@ -9,7 +9,7 @@ const isLeaf = (node: BSTNode) => {
     return node.left === null && node.right === null;
 };
 
-export const calculateBranchSumsInitial = (node: BSTNode) => {
+export const calculateBranchSumsStack = (node: BSTNode) => {
     const result: number[] = [];
 
     const stack = [node];
