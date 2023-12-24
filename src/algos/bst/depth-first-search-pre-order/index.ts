@@ -1,5 +1,6 @@
 /**
  * Implement depth-first-search on BST with pre-order algorithm
+ * (first visit root, then traverse left subtree, then right subtree)
  */
 
 import { BSTNode } from '$algos/data-structures/BST-node';
