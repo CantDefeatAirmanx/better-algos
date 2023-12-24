@@ -9,8 +9,8 @@ describe('shufflle tests', () => {
     let numberArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 1, 2, 3];
 
     afterEach(() => {
-        stringArray = stringArrayDefault;
-        numberArray = numberArrayDefault;
+        stringArray = _.cloneDeep(stringArrayDefault);
+        numberArray = _.cloneDeep(numberArrayDefault);
     });
 
     const areItemsEqual = <T>(first: T[], second: T[]) => {
@@ -49,30 +49,34 @@ describe('shufflle tests', () => {
     };
 
     describe('basic', () => {
-        const stringResult = shuffle(stringArray);
-        const numberResult = shuffle(numberArray);
+        test('should work', () => {
+            const stringResult = shuffle(stringArray);
+            const numberResult = shuffle(numberArray);
 
-        expect(stringResult.length).toBe(stringArray.length);
-        expect(numberResult.length).toBe(numberArray.length);
+            expect(stringResult.length).toBe(stringArrayDefault.length);
+            expect(numberResult.length).toBe(numberArrayDefault.length);
 
-        expect(stringResult).not.toEqual(stringArray);
-        expect(numberResult).not.toEqual(numberArray);
+            expect(stringResult).not.toEqual(stringArrayDefault);
+            expect(numberResult).not.toEqual(numberArrayDefault);
 
-        expect(areItemsEqual(stringResult, stringArray)).toBe(true);
-        expect(areItemsEqual(numberResult, numberArray)).toBe(true);
+            expect(areItemsEqual(stringResult, stringArrayDefault)).toBe(true);
+            expect(areItemsEqual(numberResult, numberArrayDefault)).toBe(true);
+        });
     });
 
-    describe('morris-fisher', () => {
-        const stringResult = shuffleFisher(stringArray);
-        const numberResult = shuffleFisher(numberArray);
+    describe('iets-fisher', () => {
+        test('should work', () => {
+            const stringResult = shuffleFisher(stringArray);
+            const numberResult = shuffleFisher(numberArray);
 
-        expect(stringResult.length).toBe(stringArray.length);
-        expect(numberResult.length).toBe(numberArray.length);
+            expect(stringResult.length).toBe(stringArrayDefault.length);
+            expect(numberResult.length).toBe(numberArrayDefault.length);
 
-        expect(stringResult).not.toEqual(stringArray);
-        expect(numberResult).not.toEqual(numberArray);
+            expect(stringResult).not.toEqual(stringArrayDefault);
+            expect(numberResult).not.toEqual(numberArrayDefault);
 
-        expect(areItemsEqual(stringResult, stringArray)).toBe(true);
-        expect(areItemsEqual(numberResult, numberArray)).toBe(true);
+            expect(areItemsEqual(stringResult, stringArrayDefault)).toBe(true);
+            expect(areItemsEqual(numberResult, numberArrayDefault)).toBe(true);
+        });
     });
 });
