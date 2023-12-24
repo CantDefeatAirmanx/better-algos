@@ -1,3 +1,7 @@
+/**
+ * Implement depth-first-search on BST with pre-order algorithm
+ */
+
 import { BSTNode } from '$algos/data-structures/BST-node';
 
 const isLeaf = (node: BSTNode) => node.left === null && node.right === null;
