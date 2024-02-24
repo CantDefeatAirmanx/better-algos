@@ -14,8 +14,8 @@ export const calculateTandemBicycleTotalSpeed = (
         throw new Error('incorrect input');
     }
 
-    const sortedBlue = blueShirtSpeed.sort((f, s) => s - f);
-    const sortedRed = redShirtSpeeds.sort((f, s) => s - f);
+    const sortedBlue = [...blueShirtSpeed].sort((f, s) => s - f);
+    const sortedRed = [...redShirtSpeeds].sort((f, s) => s - f);
 
     let result = 0;
 
