@@ -40,3 +40,31 @@ export const canFormClassPhoto = (redShirtsStudents: number[], blueShirtsStudent
 
     return isBlueHigherFormed || isRedHigherFormed;
 };
+
+export const canFormClassPhotoOptimized = (redShirtStudents: number[], blueShirtStudents: number[]) => {
+    if (redShirtStudents.length !== blueShirtStudents.length) {
+        throw new Error('students arrays have different lengths');
+    }
+
+    if (redShirtStudents.length === 0) {
+        return false;
+    }
+
+    const sortedBlue = [...blueShirtStudents].sort((f, s) => s - f);
+    const sortedRed = [...redShirtStudents].sort((f, s) => s - f);
+
+    const tallest = Math.max(sortedBlue[0], sortedRed[0]);
+    const tallestRow = tallest === sortedBlue[0] ? sortedBlue : sortedRed;
+    const lesserRow = tallestRow === sortedBlue ? sortedRed : sortedBlue;
+
+    for (let index = 0; index < tallestRow.length; index++) {
+        const tallestHeight = tallestRow[index];
+        const lesserHeight = lesserRow[index];
+
+        if (lesserHeight >= tallestHeight) {
+            return false;
+        }
+    }
+
+    return true;
+};
