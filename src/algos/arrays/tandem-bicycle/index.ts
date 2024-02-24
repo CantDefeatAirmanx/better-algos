@@ -1,3 +1,10 @@
+/**
+ * Task: there are two arrays representing cyclist speeds. Cyclists operates tandem bicycle
+ * and pair must be formed with 1 guy from first array and another one from second. The task is to
+ * calculate maximum (with fastest = true) or mininum (with fastest = false) total speeds of cyclists.
+ * Speed is dictated by the fastest rider (3 1 = 3)
+ */
+
 export const calculateTandemBicycleTotalSpeed = (
     blueShirtSpeed: number[],
     redShirtSpeeds: number[],
@@ -14,8 +21,8 @@ export const calculateTandemBicycleTotalSpeed = (
 
     for (let index = 0; index < sortedBlue.length; index++) {
         const blue = sortedBlue[index];
-        const red = fastest ? sortedRed[index] : sortedRed[sortedRed.length - 1 - index];
-        result += Math.min(blue, red);
+        const red = fastest ? sortedRed[sortedRed.length - 1 - index] : sortedRed[index];
+        result += Math.max(blue, red);
     }
 
     return result;
