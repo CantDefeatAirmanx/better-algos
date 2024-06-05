@@ -14,12 +14,6 @@ export const calculateMaximumProfit = (jobs: Job[]) => {
         return 0;
     }
 
-    if (jobs.length === 1) {
-        return jobs[0].payment;
-    }
-
-    const jobsCopy = [...jobs];
-
     const maxDeadline = jobs.reduce(
         (acc, cur) => (cur.deadline > acc ? cur.deadline : acc),
         jobs[0].deadline
@@ -30,7 +24,7 @@ export const calculateMaximumProfit = (jobs: Job[]) => {
         return jobs.reduce((acc, curr) => acc + curr.payment, 0);
     }
 
-    const sortedByProfitDesc = jobsCopy.sort((f, s) => s.payment - f.payment);
+    const sortedByProfitDesc = [...jobs].sort((f, s) => s.payment - f.payment);
     const slots = new Array<Job>(theoriticalMaxSlots);
 
     outer: for (let index = 0; index < sortedByProfitDesc.length; index++) {
@@ -45,7 +39,7 @@ export const calculateMaximumProfit = (jobs: Job[]) => {
         for (let j = position - 1; j >= 0; j--) {
             if (slots[j] === undefined) {
                 slots[j] = job;
-                continue outer;
+                break;
             }
         }
     }
