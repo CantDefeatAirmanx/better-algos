@@ -4,7 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "env TZ=Europe/Moscow jest ./src"
+        "test": "env TZ=Europe/Moscow jest ./src",
+        "test:watch": "env TZ=Europe/Moscow jest --watch"
     },
     "keywords": [],
     "author": "",

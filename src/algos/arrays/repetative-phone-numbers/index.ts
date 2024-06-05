@@ -1,7 +1,7 @@
-interface PersonInfo {
+type PersonInfo = {
     name: string;
     phones: number[];
-}
+};
 type Notebook = PersonInfo[];
 
 export const findRepetativePhones = (notebook: Notebook) => {
