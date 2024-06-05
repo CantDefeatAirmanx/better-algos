@@ -30,7 +30,6 @@ export const calculateMaximumProfit = (jobs: Job[]) => {
 
     const sortedByProfitDesc = jobsCopy.sort((f, s) => s.payment - f.payment);
     const slots = new Array<Job>(theoriticalMaxSlots);
-    let result = 0;
 
     outer: for (let index = 0; index < sortedByProfitDesc.length; index++) {
         const job = sortedByProfitDesc[index];
