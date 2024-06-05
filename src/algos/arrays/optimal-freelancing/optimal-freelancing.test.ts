@@ -26,6 +26,21 @@ describe('calculateMaximumProfit tests', () => {
             { deadline: 2, payment: 3 },
             { deadline: 5, payment: 6 },
         ];
-        expect(calculateMaximumProfit(data)).toBe(14);
+        expect(calculateMaximumProfit(data)).toBe(21);
+    });
+
+    test('should calculate profit with jobs conflicts and use days gaps to complete more jobs', () => {
+        const data = [
+            { deadline: 1, payment: 1 },
+            { deadline: 2, payment: 2 },
+            { deadline: 2, payment: 3 },
+            { deadline: 3, payment: 4 },
+            { deadline: 4, payment: 4 },
+            { deadline: 6, payment: 5 },
+            { deadline: 6, payment: 6 },
+            { deadline: 6, payment: 0 },
+            { deadline: 6, payment: 1 },
+        ];
+        expect(calculateMaximumProfit(data)).toBe(25);
     });
 });

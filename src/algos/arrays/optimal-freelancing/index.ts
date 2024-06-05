@@ -10,34 +10,43 @@ export type Job = {
 };
 
 export const calculateMaximumProfit = (jobs: Job[]) => {
+    if (jobs.length === 0) {
+        return 0;
+    }
+
+    if (jobs.length === 1) {
+        return jobs[0].payment;
+    }
+
+    const jobsCopy = [...jobs];
+
+    const sortedByDeadlineAsc = jobsCopy.sort((f, s) => f.deadline - s.deadline);
+    const maxDeadline = sortedByDeadlineAsc[sortedByDeadlineAsc.length - 1].deadline;
+    const theoriticalMaxSlots = maxDeadline;
+
+    if (theoriticalMaxSlots >= jobs.length) {
+        return jobs.reduce((acc, curr) => acc + curr.payment, 0);
+    }
+
+    const sortedByProfitDesc = jobsCopy.sort((f, s) => s.payment - f.payment);
+    const slots = new Array<Job>(theoriticalMaxSlots);
     let result = 0;
 
-    const sortedJobsByDeadline = [...jobs].sort((f, s) => f.deadline - s.deadline);
-
-    for (let index = 0; index < sortedJobsByDeadline.length; index++) {
-        const job = sortedJobsByDeadline[index];
-        const jobsWithSameDeadline = [job];
-
-        for (let j = index + 1; j < sortedJobsByDeadline.length; j++) {
-            const nextJob = sortedJobsByDeadline[j];
-            if (nextJob.deadline !== job.deadline) {
-                break;
-            }
-            jobsWithSameDeadline.push(nextJob);
-        }
-
-        if (jobsWithSameDeadline.length === 1) {
-            result += job.payment;
+    outer: for (let index = 0; index < sortedByProfitDesc.length; index++) {
+        const job = sortedByProfitDesc[index];
+        const position = job.deadline;
+        if (slots[position] === undefined) {
+            slots[position] = job;
             continue;
         }
 
-        const jobWithMaximumPayment = jobsWithSameDeadline.reduce(
-            (acc, testJob) => (testJob.payment > acc.payment ? testJob : acc),
-            job
-        );
-        result += jobWithMaximumPayment.payment;
-        index += jobsWithSameDeadline.length - 1;
+        for (let j = position - 1; j >= 0; j--) {
+            if (slots[j] === undefined) {
+                slots[j] = job;
+                continue outer;
+            }
+        }
     }
 
-    return result;
+    return slots.reduce((acc, job) => acc + job.payment, 0);
 };
