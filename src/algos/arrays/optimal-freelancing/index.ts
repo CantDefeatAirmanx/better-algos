@@ -35,7 +35,8 @@ export const calculateMaximumProfit = (jobs: Job[]) => {
 
     outer: for (let index = 0; index < sortedByProfitDesc.length; index++) {
         const job = sortedByProfitDesc[index];
-        const position = job.deadline;
+        const position = job.deadline - 1;
+
         if (slots[position] === undefined) {
             slots[position] = job;
             continue;
