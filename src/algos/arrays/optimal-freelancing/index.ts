@@ -20,8 +20,10 @@ export const calculateMaximumProfit = (jobs: Job[]) => {
 
     const jobsCopy = [...jobs];
 
-    const sortedByDeadlineAsc = jobsCopy.sort((f, s) => f.deadline - s.deadline);
-    const maxDeadline = sortedByDeadlineAsc[sortedByDeadlineAsc.length - 1].deadline;
+    const maxDeadline = jobs.reduce(
+        (acc, cur) => (cur.deadline > acc ? cur.deadline : acc),
+        jobs[0].deadline
+    );
     const theoriticalMaxSlots = maxDeadline;
 
     if (theoriticalMaxSlots >= jobs.length) {
