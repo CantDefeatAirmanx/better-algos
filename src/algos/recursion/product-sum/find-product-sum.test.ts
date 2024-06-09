@@ -13,7 +13,7 @@ describe('find product sum', () => {
 
         test('should work with nested arrays', () => {
             const input = [1, [[[2], 3], 4], [5]];
-            expect(findProductSumRecursion(input)).toBe(15);
+            expect(findProductSumRecursion(input)).toBe(1 + 2 * 4 + 3 * 3 + 4 * 2 + 5 * 2);
         });
     });
 
@@ -29,7 +29,7 @@ describe('find product sum', () => {
 
         test('should work with nested arrays', () => {
             const input = [1, [[[2], 3], 4], [5]];
-            expect(findProductSumStack(input)).toBe(15);
+            expect(findProductSumStack(input)).toBe(1 + 2 * 4 + 3 * 3 + 4 * 2 + 5 * 2);
         });
     });
 });
