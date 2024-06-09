@@ -1,4 +1,4 @@
-const calculateFactorialRec = (n: number): number => {
+export const calculateFactorialRec = (n: number): number => {
     if (n < 0) {
         throw new Error('Illigal argument');
     }
@@ -10,7 +10,7 @@ const calculateFactorialRec = (n: number): number => {
     return n * calculateFactorialRec(n - 1);
 };
 
-const calculateFactorial = (n: number) => {
+export const calculateFactorial = (n: number) => {
     if (n < 0) {
         throw new Error('Illigal argument');
     }
@@ -25,5 +25,3 @@ const calculateFactorial = (n: number) => {
 
     return result;
 };
-
-export {};
