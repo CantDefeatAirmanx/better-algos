@@ -1,4 +1,4 @@
-// O(2 ^ n) time O(2 ^ n) space
+// O(2 ^ n) time O(n) space
 export const findNthFibonacciRecursion = (n: number): number => {
     if (n < 1 || Math.round(n) !== n) {
         throw new Error('incorrect arguments');
