@@ -1,4 +1,4 @@
-import { FindThreeLargestNumbers, findThreeLargestNumbersSorting } from '.';
+import { FindThreeLargestNumbers, findThreeLargestNumbersOptimized, findThreeLargestNumbersSorting } from '.';
 
 const generateTests = (func: FindThreeLargestNumbers) => {
     return () => {
@@ -17,4 +17,5 @@ const generateTests = (func: FindThreeLargestNumbers) => {
 
 describe('find three largest numbers', () => {
     describe('sorting', generateTests(findThreeLargestNumbersSorting));
+    describe('optimized', generateTests(findThreeLargestNumbersOptimized));
 });
