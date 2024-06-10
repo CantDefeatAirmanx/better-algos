@@ -1,7 +1,6 @@
-// O(N * logN) time O(1) space
-
 export type FindThreeLargestNumbers = (numbers: number[]) => [number, number, number];
 
+// O(N * logN) time O(1) space
 export const findThreeLargestNumbersSorting: FindThreeLargestNumbers = (numbers) => {
     if (numbers.length < 3) {
         throw new Error('numbers length should be greater or equal 3');
