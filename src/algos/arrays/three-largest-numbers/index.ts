@@ -12,7 +12,7 @@ export const findThreeLargestNumbersSorting: FindThreeLargestNumbers = (numbers)
     return [third, second, first];
 };
 
-// O(N * M) time O(1) space
+// O(N) time O(1) space
 export const findThreeLargestNumbersOptimized: FindThreeLargestNumbers = (numbers) => {
     if (numbers.length < 3) {
         throw new Error('numbers length should be greater or equal 3');
