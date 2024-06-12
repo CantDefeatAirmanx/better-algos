@@ -10,6 +10,7 @@ const config: Config = {
     moduleFileExtensions: ['js', 'ts', 'tsx', 'json'],
     moduleNameMapper: {
         '^\\$algos/(.*)$': '<rootDir>/src/algos/$1',
+        '^\\$shared/(.*)$': '<rootDir>/src/shared/$1',
     },
     preset: 'ts-jest/presets/js-with-ts',
     testPathIgnorePatterns: ['/node_modules/', '__mocks__', '/src/common/components/application'],

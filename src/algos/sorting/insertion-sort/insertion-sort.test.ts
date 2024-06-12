@@ -1,36 +1,46 @@
-import { insertionSort, intertionSortWithPredicate } from '.';
+import {
+    InsertionSortNumbers,
+    insertionSortWithShift,
+    insertionSortWithSwap,
+    intertionSortWithPredicate,
+} from '.';
 
-describe('bubble sort', () => {
-    describe('simplified', () => {
+const generateBasicTests = (func: InsertionSortNumbers) => {
+    return () => {
         test('should work with empty array', () => {
-            expect(insertionSort([])).toEqual([]);
+            expect(func([])).toEqual([]);
         });
 
         test('should work with single length array', () => {
-            expect(insertionSort([1])).toEqual([1]);
+            expect(func([1])).toEqual([1]);
         });
 
         test('should with two length array', () => {
-            expect(insertionSort([2, 1])).toEqual([1, 2]);
+            expect(func([2, 1])).toEqual([1, 2]);
         });
 
         test('should work with negative values', () => {
             const input = [-3, -5, 2, -10, 1, 3];
 
-            expect(insertionSort(input)).toEqual([-10, -5, -3, 1, 2, 3]);
+            expect(func(input)).toEqual([-10, -5, -3, 1, 2, 3]);
         });
 
         test('should work', () => {
             const input = [10, 3, 0, 2, 3, 1];
 
-            expect(insertionSort(input)).toEqual([0, 1, 2, 3, 3, 10]);
+            expect(func(input)).toEqual([0, 1, 2, 3, 3, 10]);
         });
 
         test('should work in place', () => {
             const input = [2, 1];
-            expect(insertionSort(input)).toBe(input);
+            expect(func(input)).toBe(input);
         });
-    });
+    };
+};
+
+describe('bubble sort', () => {
+    describe('withShift', generateBasicTests(insertionSortWithShift));
+    describe('withSwap', generateBasicTests(insertionSortWithSwap));
 
     describe('with predicate', () => {
         test('should work with empty array', () => {
