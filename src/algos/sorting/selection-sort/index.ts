@@ -12,7 +12,7 @@ export const selectionSort = (array: number[]) => {
         let smallest = array[sortedPartEndIndex];
 
         for (let index = sortedPartEndIndex; index < array.length; index++) {
-            if (array[index] > smallest) {
+            if (array[index] >= smallest) {
                 continue;
             }
 
@@ -42,7 +42,7 @@ export const selectionSortWithPredicate = <GValue>(
         let smallest = array[sortedPartEndIndex];
 
         for (let index = sortedPartEndIndex; index < array.length; index++) {
-            if (predicate(array[index], smallest) > 0) {
+            if (predicate(array[index], smallest) >= 0) {
                 continue;
             }
 
