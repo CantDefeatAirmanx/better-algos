@@ -3,7 +3,7 @@ import { swap } from '$shared/utils/swap';
 export type InsertionSortNumbers = (array: number[]) => number[];
 
 const shiftRight = <GValue>(array: GValue[], startIndex: number, endIndex: number) => {
-    let prevValue = array[startIndex];
+    let prevValue = array[startIndex - 1];
     for (let index = startIndex; index <= endIndex; index++) {
         const buffer = array[index];
         array[index] = prevValue;
@@ -15,7 +15,7 @@ export const insertionSortWithShift = (numbers: number[]) => {
     if (numbers.length < 2) {
         return numbers;
     }
-
+    
     for (let idx1 = 1; idx1 < numbers.length; idx1++) {
         const number = numbers[idx1];
         const prevIndex = idx1 - 1;

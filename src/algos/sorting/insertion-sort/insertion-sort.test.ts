@@ -38,7 +38,7 @@ const generateBasicTests = (func: InsertionSortNumbers) => {
     };
 };
 
-describe('bubble sort', () => {
+describe('insetion sort', () => {
     describe('withShift', generateBasicTests(insertionSortWithShift));
     describe('withSwap', generateBasicTests(insertionSortWithSwap));
 
