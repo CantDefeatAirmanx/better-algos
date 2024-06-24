@@ -9,14 +9,11 @@ export const selectionSort = (array: number[]) => {
 
     while (sortedPartEndIndex < array.length - 1) {
         let smallestInd = sortedPartEndIndex;
-        let smallest = array[sortedPartEndIndex];
 
         for (let index = sortedPartEndIndex; index < array.length; index++) {
-            if (array[index] >= smallest) {
+            if (array[index] >= array[smallestInd]) {
                 continue;
             }
-
-            smallest = array[index];
             smallestInd = index;
         }
         swap(array, smallestInd, sortedPartEndIndex);
@@ -39,14 +36,11 @@ export const selectionSortWithPredicate = <GValue>(
 
     while (sortedPartEndIndex < array.length - 1) {
         let smallestInd = sortedPartEndIndex;
-        let smallest = array[sortedPartEndIndex];
 
         for (let index = sortedPartEndIndex; index < array.length; index++) {
-            if (predicate(array[index], smallest) >= 0) {
+            if (predicate(array[index], array[smallestInd]) >= 0) {
                 continue;
             }
-
-            smallest = array[index];
             smallestInd = index;
         }
         swap(array, smallestInd, sortedPartEndIndex);
