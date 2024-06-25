@@ -1,4 +1,4 @@
-import { IsPalindrome, isPalindromeOneLine, isPalindromeOptimized } from '.';
+import { IsPalindrome, isPalindromeOneLine, isPalindromeOptimized, isPalindromeRecursion } from '.';
 
 const generateTests = (f: IsPalindrome) => {
     return () => {
@@ -36,4 +36,5 @@ const generateTests = (f: IsPalindrome) => {
 describe('isPalindrome', () => {
     describe('isPalindromeOptimized', generateTests(isPalindromeOptimized));
     describe('isPalindromeOneLine', generateTests(isPalindromeOneLine));
+    describe('isPalindromeRecursion', generateTests(isPalindromeRecursion));
 });
