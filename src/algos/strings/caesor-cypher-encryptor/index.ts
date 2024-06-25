@@ -1,3 +1,12 @@
+/**
+ * Task: write a function that would implement caesor cypher encryptions.
+ * With Caesort Cypher Encryption each letter in string shift by key indexes in
+ * the alphabet.
+ *
+ * ex: abc, key = 1 => result = bcd.
+ *     xyz, key = 2 => result = zab
+ */
+
 const LOWER_CASE_LETTER_REGEX = /[a-z]/;
 const UPPER_CASE_LETTER_REGEX = /[A-Z]/;
 
