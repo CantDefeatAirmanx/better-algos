@@ -27,6 +27,10 @@ const generateTests = (func: FindCommonCharacters) => {
         test('should work', () => {
             expect(findCommonCharactersBrute(['bcdddd', 'scsczb', 'aScASb']).sort()).toEqual(['b', 'c']);
         });
+
+        test('should work with duplicates of common chars in single string', () => {
+            expect(findCommonCharactersBrute(['bcdddd', 'scsczb', 'aScASb']).sort()).toEqual(['b', 'c']);
+        });
     };
 };
 
