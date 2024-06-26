@@ -42,8 +42,9 @@ export const findCommonCharactersOptimized: FindCommonCharacters = (array) => {
 
     for (let index = 1; index < array.length; index++) {
         const string = array[index];
+        const set = new Set(string);
 
-        for (const char of string) {
+        for (const char of set) {
             if (!charsMap.has(char)) {
                 charsMap.set(char, 0);
             }
