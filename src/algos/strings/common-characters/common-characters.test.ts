@@ -1,6 +1,6 @@
-import { findCommonCharacters, findCommonCharactersBrute } from '.';
+import { FindCommonCharacters, findCommonCharactersBrute, findCommonCharactersOptimized } from '.';
 
-const generateTests = (func: findCommonCharacters) => {
+const generateTests = (func: FindCommonCharacters) => {
     return () => {
         test('should work with empty array', () => {
             expect(findCommonCharactersBrute([])).toEqual([]);
@@ -32,4 +32,5 @@ const generateTests = (func: findCommonCharacters) => {
 
 describe('find common characters', () => {
     describe('brute force', generateTests(findCommonCharactersBrute));
+    describe('optimized', generateTests(findCommonCharactersOptimized));
 });

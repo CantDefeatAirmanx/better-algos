@@ -3,9 +3,9 @@
  *  ex: ['abc', 'bcdffb', 'szczxbc'] -> ['b', 'c']
  */
 
-export type findCommonCharacters = (array: string[]) => string[];
+export type FindCommonCharacters = (array: string[]) => string[];
 
-export const findCommonCharactersBrute: findCommonCharacters = (array) => {
+export const findCommonCharactersBrute: FindCommonCharacters = (array) => {
     if (array.length === 0) {
         return [];
     }
@@ -32,3 +32,29 @@ function findArraysUniqueIntersections<GValue>(array1: GValue[], array2: GValue[
 
     return Array.from(result);
 }
+
+export const findCommonCharactersOptimized: FindCommonCharacters = (array) => {
+    if (array.length === 0) {
+        return [];
+    }
+
+    const charsMap = new Map<string, number>();
+
+    for (let index = 1; index < array.length; index++) {
+        const string = array[index];
+
+        for (const char of string) {
+            if (!charsMap.has(char)) {
+                charsMap.set(char, 0);
+            }
+            charsMap.set(char, charsMap.get(char)! + 1);
+        }
+    }
+
+    return [...charsMap.entries()].reduce<string[]>((acc, [char, count]) => {
+        if (count === array.length) {
+            acc.push(char);
+        }
+        return acc;
+    }, []);
+};
